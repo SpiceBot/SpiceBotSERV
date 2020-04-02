@@ -6,7 +6,7 @@ from .interface.config import botcfg
 from .interface.comms import comms
 from .interface.events import events
 from .interface.logs import logs
-from .tools.startupmonologue import startupmonologue
+from .tools import class_create, startupmonologue, humanized_time
 # from .interface.users import BotUsers
 
 
@@ -34,7 +34,9 @@ class SpiceBot():
         self.events = events
 
         # startup monologue
-        self.startupmonologue = startupmonologue
+        self.tools = class_create("tools")
+        self.tools.startupmonologue = startupmonologue
+        self.tools.humanized_time = humanized_time
 
         # Internal user list
         # self.users = BotUsers()

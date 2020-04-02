@@ -23,8 +23,8 @@ def bot_startup_monologue_start(bot, trigger):
 @sopel.module.rule('.*')
 def bot_startup_monologue_sopel_version(bot, trigger):
     spicebot.events.trigger(bot, spicebot.events.BOT_STARTUPMONOLOGUE_VERSION, "SpiceBot_StartupMonologue")
-    spicebot.startupmonologue.dict["sopel_version"] = "Sopel " + str(spicebot.version.sopel["version_local_num"])
-    spicebot.startupmonologue.dict["spicebot_version"] = "SpiceBot " + str(spicebot.version.spicebot["version_local_num"])
+    spicebot.tools.startupmonologue.dict["sopel_version"] = "Sopel " + str(spicebot.version.sopel["version_local_num"])
+    spicebot.tools.startupmonologue.dict["spicebot_version"] = "SpiceBot " + str(spicebot.version.spicebot["version_local_num"])
 
 
 @sopel.module.event(spicebot.events.BOT_CHANNELS)
@@ -33,7 +33,7 @@ def bot_startup_monologue_channels(bot, trigger):
     botcount = spicebot.channels.total_bot_channels()
     servercount = spicebot.channels.total_channels()
     displayval = "I am in " + str(botcount) + " of " + str(servercount) + " channel(s) available on this server."
-    spicebot.startupmonologue.dict["channels"] = displayval
+    spicebot.tools.startupmonologue.dict["channels"] = displayval
     spicebot.logs.log('SpiceBot_StartupMonologue', displayval)
     spicebot.events.trigger(bot, spicebot.events.BOT_STARTUPMONOLOGUE_CHANNELS, "SpiceBot_StartupMonologue")
 
@@ -51,7 +51,7 @@ def bot_startup_monologue_commands(bot, trigger):
                     availablecomsfiles.append(filepath)
     availablecomsfiles = len(availablecomsfiles)
     displayval = "There are " + str(availablecomsnum) + " commands available in " + str(availablecomsfiles) + " files."
-    spicebot.startupmonologue.dict["commands"] = displayval
+    spicebot.tools.startupmonologue.dict["commands"] = displayval
     spicebot.logs.log('SpiceBot_StartupMonologue', displayval)
     spicebot.events.trigger(bot, spicebot.events.BOT_STARTUPMONOLOGUE_COMMANDS, "SpiceBot_StartupMonologue")
 
@@ -62,7 +62,7 @@ def bot_startup_monologue_ai(bot, trigger):
     availablecomsnum = spicebot.botai.dict['patterncounts']
     availablecomsfiles = spicebot.botai.dict['filecounts']
     displayval = "There are " + str(availablecomsnum) + " AI pattern matches available in " + str(availablecomsfiles) + " files."
-    spicebot.startupmonologue.dict["ai"] = displayval
+    spicebot.tools.startupmonologue.dict["ai"] = displayval
     spicebot.logs.log('SpiceBot_StartupMonologue', displayval)
     spicebot.events.trigger(bot, spicebot.events.BOT_STARTUPMONOLOGUE_AI, "SpiceBot_StartupMonologue")
 
@@ -76,7 +76,7 @@ def bot_startup_monologue_releasenotes(bot, trigger):
             newnotes = True
     if newnotes:
         displayval = "Check Release Notes for News"
-        spicebot.startupmonologue.dict["releasenotes"] = displayval
+        spicebot.tools.startupmonologue.dict["releasenotes"] = displayval
         spicebot.logs.log('SpiceBot_StartupMonologue', displayval)
     spicebot.events.trigger(bot, spicebot.events.BOT_STARTUPMONOLOGUE_RNOTES, "SpiceBot_StartupMonologue")
 
@@ -85,10 +85,10 @@ def bot_startup_monologue_releasenotes(bot, trigger):
 @sopel.module.rule('.*')
 def bot_startup_monologue_display(bot, trigger):
     dispmsg = [" startup complete"]
-    for messagekey in list(spicebot.startupmonologue.dict.keys()):
-        dispmsg.append(spicebot.startupmonologue.dict[messagekey])
+    for messagekey in list(spicebot.tools.startupmonologue.dict.keys()):
+        dispmsg.append(spicebot.tools.startupmonologue.dict[messagekey])
     if spicebot.events.dict["RPL_WELCOME_Count"] == 1:
-        timesince = spicebot.humanized_time(time.time() - spicebot.events.BOT_UPTIME)
+        timesince = spicebot.tools.humanized_time(time.time() - spicebot.events.BOT_UPTIME)
         if timesince == "just now":
             timesince = "1 second"
         dispmsg.append("Startup took " + timesince)
