@@ -66,7 +66,7 @@ def bot_startup_monologue_ai(bot, trigger):
     spicebot.logs.log('SpiceBot_StartupMonologue', displayval)
     spicebot.events.trigger(bot, spicebot.events.BOT_STARTUPMONOLOGUE_AI, "SpiceBot_StartupMonologue")
 
-
+""""
 @sopel.module.event(spicebot.events.BOT_READY)
 @sopel.module.rule('.*')
 def bot_startup_monologue_releasenotes(bot, trigger):
@@ -79,7 +79,7 @@ def bot_startup_monologue_releasenotes(bot, trigger):
         spicebot.tools.startupmonologue.dict["releasenotes"] = displayval
         spicebot.logs.log('SpiceBot_StartupMonologue', displayval)
     spicebot.events.trigger(bot, spicebot.events.BOT_STARTUPMONOLOGUE_RNOTES, "SpiceBot_StartupMonologue")
-
+""""
 
 @sopel.module.event(spicebot.events.BOT_LOADED)
 @sopel.module.rule('.*')
