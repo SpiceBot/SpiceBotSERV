@@ -3,7 +3,7 @@ from __future__ import unicode_literals, absolute_import, division, print_functi
 
 import sopel
 
-from .spicebot import spicebot
+from SpiceBotCore.spicebot import spicebot
 
 
 @sopel.module.event("001")
