@@ -15,7 +15,7 @@ import time
 def bot_startup_monologue_start(bot, trigger):
     # Startup
     spicebot.logs.log('SpiceBot_StartupMonologue', bot.nick + " is now starting. Please wait while I load my configuration")
-    bot.osd(" is now starting. Please wait while I load my configuration.", list(bot.channels.keys()), 'ACTION')
+    spicebot.osd(" is now starting. Please wait while I load my configuration.", list(bot.channels.keys()), 'ACTION')
     spicebot.events.trigger(bot, spicebot.events.BOT_STARTUPMONOLOGUE_CONNECTED, "SpiceBot_StartupMonologue")
 
 
@@ -94,7 +94,7 @@ def bot_startup_monologue_display(bot, trigger):
         dispmsg.append("Startup took " + timesince)
     # Announce to chan, then handle some closing stuff
     spicebot.logs.log('SpiceBot_StartupMonologue', bot.nick + " startup complete")
-    bot.osd(dispmsg, list(bot.channels.keys()), 'ACTION')
+    spicebot.osd(dispmsg, list(bot.channels.keys()), 'ACTION')
     spicebot.events.trigger(bot, spicebot.events.BOT_STARTUPMONOLOGUE, "SpiceBot_StartupMonologue")
     spicebot.logs.log('SpiceBot_StartupMonologue', "Startup Monologue has been issued to all channels.", True)
 
@@ -115,6 +115,6 @@ def bot_startup_monologue_errors(bot, trigger):
             spicebot.logs.log('SpiceBot_Logs', str(foundphase))
         searchphrasefound.insert(0, "Notice to Bot Admins: ")
         searchphrasefound.append("Run the debug command for more information.")
-        bot.osd(searchphrasefound, list(bot.channels.keys()))
+        spicebot.osd(searchphrasefound, list(bot.channels.keys()))
     else:
         spicebot.logs.log('SpiceBot_Logs', "No issues found at bot startup!", True)
