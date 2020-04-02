@@ -19,12 +19,12 @@ def bot_startup_monologue_start(bot, trigger):
     spicebot.events.trigger(bot, spicebot.events.BOT_STARTUPMONOLOGUE_CONNECTED, "SpiceBot_StartupMonologue")
 
 
-@sopel.module.event(spicebot.events.BOT_CONNECTED)
-@sopel.module.rule('.*')
-def bot_startup_monologue_sopel_version(bot, trigger):
-    spicebot.events.trigger(bot, spicebot.events.BOT_STARTUPMONOLOGUE_VERSION, "SpiceBot_StartupMonologue")
-    spicebot.tools.startupmonologue.dict["sopel_version"] = "Sopel " + str(spicebot.version.sopel["version_local_num"])
-    spicebot.tools.startupmonologue.dict["spicebot_version"] = "SpiceBot " + str(spicebot.version.spicebot["version_local_num"])
+# @sopel.module.event(spicebot.events.BOT_CONNECTED)
+# @sopel.module.rule('.*')
+# def bot_startup_monologue_sopel_version(bot, trigger):
+#    spicebot.events.trigger(bot, spicebot.events.BOT_STARTUPMONOLOGUE_VERSION, "SpiceBot_StartupMonologue")
+#    spicebot.tools.startupmonologue.dict["sopel_version"] = "Sopel " + str(spicebot.version.sopel["version_local_num"])
+#    spicebot.tools.startupmonologue.dict["spicebot_version"] = "SpiceBot " + str(spicebot.version.spicebot["version_local_num"])
 
 
 @sopel.module.event(spicebot.events.BOT_CHANNELS)
@@ -66,20 +66,20 @@ def bot_startup_monologue_ai(bot, trigger):
     spicebot.logs.log('SpiceBot_StartupMonologue', displayval)
     spicebot.events.trigger(bot, spicebot.events.BOT_STARTUPMONOLOGUE_AI, "SpiceBot_StartupMonologue")
 
-""""
-@sopel.module.event(spicebot.events.BOT_READY)
-@sopel.module.rule('.*')
-def bot_startup_monologue_releasenotes(bot, trigger):
-    newnotes = False
-    for notefile in list(spicebot.releasenotes.notes.keys()):
-        if len(spicebot.releasenotes.notes[notefile]["new"]):
-            newnotes = True
-    if newnotes:
-        displayval = "Check Release Notes for News"
-        spicebot.tools.startupmonologue.dict["releasenotes"] = displayval
-        spicebot.logs.log('SpiceBot_StartupMonologue', displayval)
-    spicebot.events.trigger(bot, spicebot.events.BOT_STARTUPMONOLOGUE_RNOTES, "SpiceBot_StartupMonologue")
-""""
+
+# @sopel.module.event(spicebot.events.BOT_READY)
+# @sopel.module.rule('.*')
+# def bot_startup_monologue_releasenotes(bot, trigger):
+#    newnotes = False
+#    for notefile in list(spicebot.releasenotes.notes.keys()):
+#        if len(spicebot.releasenotes.notes[notefile]["new"]):
+#            newnotes = True
+#    if newnotes:
+#        displayval = "Check Release Notes for News"
+#        spicebot.tools.startupmonologue.dict["releasenotes"] = displayval
+#        spicebot.logs.log('SpiceBot_StartupMonologue', displayval)
+#    spicebot.events.trigger(bot, spicebot.events.BOT_STARTUPMONOLOGUE_RNOTES, "SpiceBot_StartupMonologue")
+
 
 @sopel.module.event(spicebot.events.BOT_LOADED)
 @sopel.module.rule('.*')
