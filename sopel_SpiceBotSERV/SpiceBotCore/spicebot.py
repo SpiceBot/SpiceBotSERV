@@ -6,6 +6,7 @@ from .interface.config import botcfg
 from .interface.comms import comms
 from .interface.events import events
 from .interface.logs import logs
+from tools.startupmonologue import startupmonologue
 # from .interface.users import BotUsers
 
 
@@ -31,6 +32,9 @@ class SpiceBot():
 
         # Custom Events system
         self.events = events
+
+        # startup monologue
+        self.startupmonologue = startupmonologue
 
         # Internal user list
         # self.users = BotUsers()
