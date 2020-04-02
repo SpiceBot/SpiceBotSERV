@@ -5,6 +5,7 @@ This is the SpiceBot Events system.
 """
 import sopel
 from threading import Thread
+import inspect
 
 from SpiceBotCore.spicebot import spicebot
 
@@ -60,3 +61,16 @@ def bot_events_start(bot, trigger):
 def bot_events_startup_complete(bot, trigger):
     """All events registered as required for startup have completed"""
     spicebot.events.trigger(bot, spicebot.events.BOT_LOADED, "All registered modules setup procedures have completed")
+
+
+"""
+Other
+"""
+
+
+def lineno():
+    """Returns the current line number in our program."""
+    linenum = inspect.currentframe().f_back.f_lineno
+    frameinfo = inspect.getframeinfo(inspect.currentframe())
+    filename = frameinfo.filename
+    return str("File:  " + str(filename) + "    Line:  " + str(linenum))

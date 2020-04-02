@@ -1,6 +1,8 @@
 # coding=utf8
 from __future__ import unicode_literals, absolute_import, division, print_function
 
+import inspect
+
 from .interface.database import botdb
 from .interface.config import botcfg
 from .interface.comms import comms
@@ -33,7 +35,7 @@ class SpiceBot():
         # Custom Events system
         self.events = events
 
-        # startup monologue
+        # tools
         self.tools = class_create("tools")
         self.tools.startupmonologue = startupmonologue
         self.tools.humanized_time = humanized_time
@@ -67,3 +69,16 @@ class SpiceBot():
 
 
 spicebot = SpiceBot()
+
+
+"""
+Other
+"""
+
+
+def lineno():
+    """Returns the current line number in our program."""
+    linenum = inspect.currentframe().f_back.f_lineno
+    frameinfo = inspect.getframeinfo(inspect.currentframe())
+    filename = frameinfo.filename
+    return str("File:  " + str(filename) + "    Line:  " + str(linenum))

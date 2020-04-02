@@ -3,6 +3,7 @@ from __future__ import unicode_literals, absolute_import, division, print_functi
 """A way to track users"""
 
 import threading
+import inspect
 
 from .database import db as botdb
 
@@ -25,3 +26,16 @@ class BotUsers():
         self.lock.acquire()
         self.dict["offline"] = list(self.dict["all"].keys())
         self.lock.release()
+
+
+"""
+Other
+"""
+
+
+def lineno():
+    """Returns the current line number in our program."""
+    linenum = inspect.currentframe().f_back.f_lineno
+    frameinfo = inspect.getframeinfo(inspect.currentframe())
+    filename = frameinfo.filename
+    return str("File:  " + str(filename) + "    Line:  " + str(linenum))

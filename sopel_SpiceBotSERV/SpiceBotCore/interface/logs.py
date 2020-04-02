@@ -10,6 +10,7 @@ import threading
 import os
 import sys
 import spicemanip
+import inspect
 
 
 # TODO timestamps
@@ -127,3 +128,16 @@ class BotLogs():
 
 
 logs = BotLogs()
+
+
+"""
+Other
+"""
+
+
+def lineno():
+    """Returns the current line number in our program."""
+    linenum = inspect.currentframe().f_back.f_lineno
+    frameinfo = inspect.getframeinfo(inspect.currentframe())
+    filename = frameinfo.filename
+    return str("File:  " + str(filename) + "    Line:  " + str(linenum))

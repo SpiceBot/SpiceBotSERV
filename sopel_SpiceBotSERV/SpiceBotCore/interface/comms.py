@@ -13,6 +13,8 @@ if sys.version_info.major >= 3:
 if sys.version_info.major >= 3:
     unicode = str
 
+import inspect
+
 
 class BotComms():
 
@@ -252,3 +254,16 @@ class BotComms():
 
 
 comms = BotComms()
+
+
+"""
+Other
+"""
+
+
+def lineno():
+    """Returns the current line number in our program."""
+    linenum = inspect.currentframe().f_back.f_lineno
+    frameinfo = inspect.getframeinfo(inspect.currentframe())
+    filename = frameinfo.filename
+    return str("File:  " + str(filename) + "    Line:  " + str(linenum))

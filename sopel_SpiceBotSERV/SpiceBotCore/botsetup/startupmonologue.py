@@ -8,6 +8,7 @@ import sopel
 from SpiceBotCore.spicebot import spicebot
 
 import time
+import inspect
 
 
 @sopel.module.event(spicebot.events.BOT_CHANNELS)
@@ -118,3 +119,16 @@ def bot_startup_monologue_errors(bot, trigger):
         spicebot.osd(searchphrasefound, list(bot.channels.keys()))
     else:
         spicebot.logs.log('SpiceBot_Logs', "No issues found at bot startup!", True)
+
+
+"""
+Other
+"""
+
+
+def lineno():
+    """Returns the current line number in our program."""
+    linenum = inspect.currentframe().f_back.f_lineno
+    frameinfo = inspect.getframeinfo(inspect.currentframe())
+    filename = frameinfo.filename
+    return str("File:  " + str(filename) + "    Line:  " + str(linenum))

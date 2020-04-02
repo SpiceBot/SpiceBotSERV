@@ -11,6 +11,7 @@ import copy
 import time
 from word2number import w2n
 import inspect
+import inspect
 
 import spicemanip
 
