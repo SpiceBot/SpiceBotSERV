@@ -1,10 +1,11 @@
 # coding=utf8
 from __future__ import unicode_literals, absolute_import, division, print_function
 
-from .interface.database import BotDatabase
-from .interface.config import BotConfig
-from .interface.comms import BotComms
-from .interface.events import BotEvents
+from .interface.database import botdb
+from .interface.config import botcfg
+from .interface.comms import comms
+from .interface.events import events
+from .interface.logs import logs
 # from .interface.users import BotUsers
 
 
@@ -14,18 +15,22 @@ class SpiceBot():
         self.info = "test"
 
         # Allow access to bot config file without "bot"
-        self.config = BotConfig()
+        self.config = botcfg
 
         # allow access to bot database without "bot"
-        self.db = BotDatabase()
+        self.db = botdb
         self.db.initialize(self.config)
 
         # allow usage of bot.write without "bot"
-        self.comms = BotComms()
+        self.comms = comms
         self.comms.initialize(self.config)
 
+        # setup logging
+        self.logs = logs
+        self.logs.setup_logs(self.config)
+
         # Custom Events system
-        self.events = BotEvents()
+        self.events = events
 
         # Internal user list
         # self.users = BotUsers()

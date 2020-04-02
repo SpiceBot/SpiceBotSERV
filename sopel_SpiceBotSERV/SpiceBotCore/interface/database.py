@@ -297,3 +297,5 @@ class BotDatabase():
 
     def adjust_plugin_list(self, plugin, key, entries, adjustmentdirection):
         return self.db.adjust_plugin_list(plugin, key, entries, adjustmentdirection)
+
+botdb = BotDatabase()

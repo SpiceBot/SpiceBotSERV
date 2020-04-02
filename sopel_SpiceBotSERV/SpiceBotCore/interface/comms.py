@@ -247,3 +247,6 @@ class BotComms():
                             self.write(('NOTICE', recipientgroup), text)
                         else:
                             self.write(('PRIVMSG', recipientgroup), text)
+
+
+comms = BotComms()

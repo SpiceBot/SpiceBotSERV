@@ -14,7 +14,7 @@ import time
 
 
 # TODO
-# from .Logs import logs
+from .logs import logs
 # full_message = ':{} PRIVMSG {} :{}'.format(hostmask, sender, msg)
 
 
@@ -89,7 +89,7 @@ class BotEvents(object):
         else:
             eventnumber = str(trigger.event)
             message = trigger.args[1]
-        # logs.log('SpiceBot_Events', str(eventnumber) + "    " + str(message)) TODO
+        logs.log('SpiceBot_Events', str(eventnumber) + "    " + str(message))
         if eventnumber not in self.dict["triggers_recieved"]:
             self.dict["triggers_recieved"][eventnumber] = []
         self.dict["triggers_recieved"][eventnumber].append(message)
@@ -147,3 +147,6 @@ class BotEvents(object):
                 return function(*args, **kwargs)
             return _nop
         return actual_decorator
+
+
+events = BotEvents()

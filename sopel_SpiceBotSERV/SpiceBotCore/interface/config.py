@@ -51,3 +51,6 @@ class BotConfig():
             return eval("self.config." + name)
         else:
             return None
+
+
+botcfg = BotConfig()
