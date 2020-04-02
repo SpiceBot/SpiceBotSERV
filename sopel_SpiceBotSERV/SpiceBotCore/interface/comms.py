@@ -31,7 +31,7 @@ class BotComms():
         self.dict["bot"]["nick"] = config.core.nick
 
     def ircbackend_initialize(self, bot):
-        self.dict["bot"]["hostmask"] = bot.hostmask
+        # self.dict["bot"]["hostmask"] = bot.hostmask
         self.ircbackend = bot.backend
         self.ircdispatch = bot.dispatch
 

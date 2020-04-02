@@ -4,6 +4,7 @@ from __future__ import unicode_literals, absolute_import, division, print_functi
 from .interface.database import BotDatabase
 from .interface.config import BotConfig
 from .interface.comms import BotComms
+from .interface.events import BotEvents
 # from .interface.users import BotUsers
 
 
@@ -22,6 +23,9 @@ class SpiceBot():
         # allow usage of bot.write without "bot"
         self.comms = BotComms()
         self.comms.initialize(self.config)
+
+        # Custom Events system
+        self.events = BotEvents()
 
         # Internal user list
         # self.users = BotUsers()
