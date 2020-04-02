@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 if __name__ == '__main__':
     print('Sopel does not correctly load plugins installed with setup.py '
           'directly. Please use "pip install .", or add '
-          '{}/sopel_SpiceBotSERV to core.extra in your config.'
+          '{}/SpiceBotSERV to core.extra in your config.'
           .format(os.path.dirname(os.path.abspath(__file__))),
           file=sys.stderr)
 
