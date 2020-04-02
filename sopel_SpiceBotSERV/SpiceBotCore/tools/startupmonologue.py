@@ -1,5 +1,13 @@
 # coding=utf8
 from __future__ import unicode_literals, absolute_import, division, print_function
+"""StartupMonologue class"""
 
 
-from .startupmonologue import *
+class BotMonologue():
+
+    def __init__(self):
+
+        self.dict = {}
+
+
+startupmonologue = BotMonologue()
