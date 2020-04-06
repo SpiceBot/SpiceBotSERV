@@ -4,6 +4,8 @@ from __future__ import unicode_literals, absolute_import, division, print_functi
 import sopel
 
 import requests
+import re
+from collections import namedtuple
 
 
 class Sopel_info():
@@ -31,7 +33,27 @@ class Sopel_info():
             if self.releasenotes:
                 self.releasenotes = 'Full release notes at ' + self.releasenotes
 
-        self.version_online = sopel._version_info(self.version_online_num)
+        self.version_online = self._version_info(self.version_online_num)
+
+    def _version_info(version):
+        regex = re.compile(r'(\d+)\.(\d+)\.(\d+)(?:(a|b|rc)(\d+))?.*')
+        version_groups = regex.match(version).groups()
+        major, minor, micro = (int(piece) for piece in version_groups[0:3])
+        level = version_groups[3]
+        serial = int(version_groups[4] or 0)
+        if level == 'a':
+            level = 'alpha'
+        elif level == 'b':
+            level = 'beta'
+        elif level == 'rc':
+            level = 'candidate'
+        elif not level and version_groups[4] is None:
+            level = 'final'
+        else:
+            level = 'alpha'
+        version_type = namedtuple('version_info',
+                                  'major, minor, micro, releaselevel, serial')
+        return version_type(major, minor, micro, level, serial)
 
 
 sopel_info = Sopel_info()
