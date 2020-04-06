@@ -57,7 +57,7 @@ class BotConfig():
             argv = ['legacy']
         else:
             argv = sys.argv[1:]
-        self.opts = parser.parse_args(argv)
+        return parser.parse_args(argv)
 
 
 botcfg = BotConfig()
