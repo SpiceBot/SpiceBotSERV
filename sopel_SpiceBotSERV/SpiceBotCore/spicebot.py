@@ -69,11 +69,11 @@ class SpiceBot():
                                     },
                         }
 
-        def propagate_sb_info(self):
-            self.version = "0.1.0"
+    def propagate_sb_info(self):
+        self.version = "0.1.0"
 
-        def propogate_sopel_info():
-            self.sopel_info = sopel_info
+    def propogate_sopel_info(self):
+        self.sopel_info = sopel_info
 
     # OSD shortcut
     def osd(self, messages, recipients=None, text_method='PRIVMSG', max_messages=-1):
