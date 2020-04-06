@@ -11,6 +11,17 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.exc import SQLAlchemyError
 BASE = declarative_base()
 
+# 12:50:24 <+RustyB> session.query(Nicknames.slug).all()
+# 12:50:30 <+RustyB> or session.query(Nicknames.canonical).all()
+# 12:50:32 <+RustyB> depending what you want
+# 12:50:46 <deathbybandaid> what's the diff?
+# 12:51:04 <+dgw> Also, RIP my hope to get a quick PR in for #1836 because I like that number.
+# 12:51:06 <+RustyB> slug is all lowercase i believe
+# 12:51:10 <+RustyB> and canonical is what is in chat
+# 12:51:23 <+RustyB> because old dumb sopel reasons?
+# 12:51:31 <deathbybandaid> I usually compare with .lower() anyway
+# 12:51:44 <+dgw> Identifier objects handle that for you, btw
+
 
 class SpiceDB(object):
 
