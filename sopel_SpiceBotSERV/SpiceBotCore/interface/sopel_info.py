@@ -21,7 +21,7 @@ class Sopel_info():
         self.check_sopel()
 
     def check_sopel(self):
-        info = requests.get(self.sopel["version_url"]).json()
+        info = requests.get(self.version_url).json()
         if self.version_local.releaselevel == 'final':
             self.version_online_num = info['version']
             self.releasenotes = info['release_notes']
