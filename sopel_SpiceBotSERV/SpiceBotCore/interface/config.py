@@ -14,6 +14,9 @@ class BotConfig():
     def __init__(self):
         self.dict = {}
 
+        # opts input
+        self.opts = self.get_opts()
+
         # Load config
         self.config = get_configuration(self.opts)
 
