@@ -35,7 +35,7 @@ class Sopel_info():
 
         self.version_online = self._version_info(self.version_online_num)
 
-    def _version_info(version):
+    def _version_info(self, version):
         regex = re.compile(r'(\d+)\.(\d+)\.(\d+)(?:(a|b|rc)(\d+))?.*')
         version_groups = regex.match(version).groups()
         major, minor, micro = (int(piece) for piece in version_groups[0:3])
