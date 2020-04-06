@@ -8,6 +8,7 @@ from .interface.config import botcfg
 from .interface.comms import comms
 from .interface.events import events
 from .interface.logs import logs
+from .interface.sopel_info import sopel_info
 from .tools import class_create, startupmonologue, humanized_time
 # from .interface.users import BotUsers
 
@@ -15,7 +16,12 @@ from .tools import class_create, startupmonologue, humanized_time
 class SpiceBot():
 
     def __init__(self):
-        self.info = "test"
+
+        # Basic SpiceBot info
+        self.propagate_sb_info()
+
+        # Basic Sopel Info
+        self.propogate_sopel_info()
 
         # Allow access to bot config file without "bot"
         self.config = botcfg
@@ -62,6 +68,12 @@ class SpiceBot():
                                     "a": "admin",
                                     },
                         }
+
+        def propagate_sb_info(self):
+            self.version = "0.1.0"
+
+        def propogate_sopel_info():
+            self.sopel_info = sopel_info
 
     # OSD shortcut
     def osd(self, messages, recipients=None, text_method='PRIVMSG', max_messages=-1):

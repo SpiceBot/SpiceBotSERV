@@ -7,13 +7,12 @@ from sopel.irc.utils import safe
 import threading
 # import time
 import sys
+import inspect
 if sys.version_info.major >= 3:
     from collections import abc
 
 if sys.version_info.major >= 3:
     unicode = str
-
-import inspect
 
 
 class BotComms():

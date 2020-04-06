@@ -13,14 +13,9 @@ class BotConfig():
 
     def __init__(self):
         self.dict = {}
+
         # Load config
-        parser = build_parser()
-        if not len(sys.argv[1:]):
-            argv = ['legacy']
-        else:
-            argv = sys.argv[1:]
-        opts = parser.parse_args(argv)
-        self.config = get_configuration(opts)
+        self.config = get_configuration(self.opts)
 
         self.setup_config()
 
@@ -52,6 +47,14 @@ class BotConfig():
             return eval("self.config." + name)
         else:
             return None
+
+    def get_opts(self):
+        parser = build_parser()
+        if not len(sys.argv[1:]):
+            argv = ['legacy']
+        else:
+            argv = sys.argv[1:]
+        self.opts = parser.parse_args(argv)
 
 
 botcfg = BotConfig()
