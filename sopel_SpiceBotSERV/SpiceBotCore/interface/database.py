@@ -22,6 +22,9 @@ BASE = declarative_base()
 # 12:51:31 <deathbybandaid> I usually compare with .lower() anyway
 # 12:51:44 <+dgw> Identifier objects handle that for you, btw
 
+# sqlite> select * from nicknames where canonical = 'RustyCloud';
+# 4|rustycloud|RustyCloud
+
 
 class SpiceDB(object):
 
